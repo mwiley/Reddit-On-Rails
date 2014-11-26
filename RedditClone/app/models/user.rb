@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :communities, through: :community_users
 
   def subscribed
-    Post.joins('LEFT OUTER JOIN community_users ON posts.community_id = community_users.community_id')
+    Post.joins('INNER JOIN community_users ON posts.community_id = community_users.community_id')
+        .where(community_users: {subscriber: true, user_id: self.id})
   end
 end

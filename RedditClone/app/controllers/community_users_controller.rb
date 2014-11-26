@@ -24,12 +24,13 @@ class CommunityUsersController < ApplicationController
     @community_user = community.community_users.new
     @community_user.user = current_user
     @community_user.save
-    respond_with(@community_user)
+    redirect_to community_by_name_path(community)
   end
 
   def update
+    community = Community.find_by_name(params[:community_id])
     @community_user.update(community_user_params)
-    redirect_to community_path(@community_user)
+    redirect_to community_by_name_path(community)
   end
 
   def destroy

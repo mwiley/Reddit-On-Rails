@@ -7,13 +7,17 @@
     .row
       = link_to '',  post_downvote_path(post), class: "glyphicon glyphicon-chevron-down"
   .col-sm-7
-    = link_to post.title, post.url
-    Posted by
-    = post.user.email
-    in
-    = link_to post.community.name, community_by_name_path(post.community)
-    %br
-    = link_to post.comments.size.to_s + " comment".pluralize(post.comments.size), post_path(post)
-    = link_to 'Edit', edit_post_path(post)
-    = link_to 'Destroy', post , method: :delete, data: { confirm: 'Are you sure?' }
-    %hr
+    .row
+      = link_to post.title, post.url
+    .row
+      Posted at
+      = post.created_at
+      by
+      = post.user.email
+      to
+      = link_to post.community.name, community_by_name_path(post.community)
+      %br
+      = link_to post.comments.size.to_s + " comment".pluralize(post.comments.size), post_path(post)
+      = link_to 'Edit', edit_post_path(post)
+      = link_to 'Destroy', post , method: :delete, data: { confirm: 'Are you sure?' }
+      %hr
