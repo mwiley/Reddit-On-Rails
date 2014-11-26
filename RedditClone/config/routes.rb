@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
+
   devise_for :users
+
+  get '/r/:community', to: 'posts#index', as: :community_by_name
+  get '/r/:community/:post_id', to: 'posts#show'
+
+  resources :communities do
+    resources :community_users
+  end
 
   resources :posts do
     resources :comments
     resources :post_votes
+    get 'upvote', to: 'posts#upvote'
+    get 'downvote', to: 'posts#downvote'
   end
 
   root 'posts#index'

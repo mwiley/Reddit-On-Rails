@@ -1,0 +1,31 @@
+<h1>Listing community_users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Community</th>
+      <th>Admin</th>
+      <th>Subscriber</th>
+      <th>Banned</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @community_users.each do |community_user| %>
+      <tr>
+        <td><%= community_user.user %></td>
+        <td><%= community_user.community %></td>
+        <td><%= community_user.admin %></td>
+        <td><%= community_user.subscriber %></td>
+        <td><%= community_user.banned %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

@@ -5,7 +5,23 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    if params[:community]
+      @community = Community.find_by_name(params[:community])
+      @posts =  @community.posts
+      if @community.community_users.empty?
+        @community_user = @community.community_users.new
+      else
+        @community_user = @community.community_users.last
+      end
+
+    else
+      if current_user
+        @posts = current_user.subscribed
+      else
+        @posts = Post.all
+      end
+
+    end
   end
 
   # GET /posts/1
@@ -14,7 +30,10 @@ class PostsController < ApplicationController
     @comments = @post.comments
     @comment = @post.comments.new
     @comment.user = current_user
-    
+
+    @community = @post.community
+    @community_user = current_user.communities.new
+
     @post_vote = @post.post_votes.new
   end
 
@@ -35,7 +54,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to post_path(@post), notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -76,6 +95,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:url, :text)
+      params.require(:post).permit(:url, :text, :community_id)
     end
 end

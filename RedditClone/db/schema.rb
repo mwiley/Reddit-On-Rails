@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124230353) do
+ActiveRecord::Schema.define(version: 20141125212010) do
 
   create_table "comments", force: true do |t|
     t.string   "text"
@@ -24,6 +24,26 @@ ActiveRecord::Schema.define(version: 20141124230353) do
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "communities", force: true do |t|
+    t.string   "name"
+    t.boolean  "private"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "community_users", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "community_id"
+    t.boolean  "admin"
+    t.boolean  "subscriber"
+    t.boolean  "banned"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "community_users", ["community_id"], name: "index_community_users_on_community_id"
+  add_index "community_users", ["user_id"], name: "index_community_users_on_user_id"
 
   create_table "post_votes", force: true do |t|
     t.boolean  "upvote"
@@ -42,6 +62,7 @@ ActiveRecord::Schema.define(version: 20141124230353) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "community_id"
   end
 
   create_table "users", force: true do |t|
