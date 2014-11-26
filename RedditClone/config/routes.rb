@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
     resources :post_votes
-    get 'upvote', to: 'posts#upvote'
-    get 'downvote', to: 'posts#downvote'
+    get 'upvote', to: 'posts#upvote', as: :upvote
+    get 'downvote', to: 'posts#downvote', as: :downvote
   end
 
   root 'posts#index'

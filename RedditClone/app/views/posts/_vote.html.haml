@@ -1,0 +1,7 @@
+.row
+  = @post.get_upvotes.size - @post.get_downvotes.size
+  votes
+.row
+  = link_to 'Upvote', post_upvote_path(@post)
+.row
+  = link_to 'Downvote', post_downvote_path(@post)
