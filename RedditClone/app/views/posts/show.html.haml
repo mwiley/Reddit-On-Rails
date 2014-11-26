@@ -21,7 +21,11 @@
 
   .comments
     - @comments.each do |comment|
-      = comment.text
+      .panel.panel-default
+        .panel-heading
+          = comment.user.email
+        .panel-body
+          = comment.text
       %br
 
   = render 'comments/form'

@@ -1,24 +1,22 @@
 .col-sm-8
-  %h1 Listing posts
-  %table
-    %thead
-      %tr
-        %th Url
-        %th Text
-        %th Author
-        %th{:colspan => "3"}
-    %tbody
-      - @posts.each do |post|
-        %tr
-          %td= post.url
-          %td= post.text
-          %td= post.user.email if post.user
-          %td= link_to 'Show', post_path(post)
-          %td= link_to 'Edit', edit_post_path(post)
-          %td= link_to 'Destroy', post , method: :delete, data: { confirm: 'Are you sure?' }
+  - @posts.each do |post|
+    .row
+      = link_to post.title, post.url
+      %br
+      Posted by
+      = post.user.email
+      in
+      = link_to post.community.name, community_by_name_path(post.community)
+      %br
+      = link_to post.comments.size.to_s + " comment".pluralize(post.comments.size), post_path(post)
+      = link_to 'Edit', edit_post_path(post)
+      = link_to 'Destroy', post , method: :delete, data: { confirm: 'Are you sure?' }
+      %hr
   %br
-  = link_to 'New Post', new_post_path
+
 .col-sm-4
+  = link_to 'Submit a New Post', new_post_path, class: "btn btn-default"
+  = link_to 'Create a New Community', new_community_path, class: "btn btn-default"
   - if @community_user
     .panel
       = render 'community_users/form'

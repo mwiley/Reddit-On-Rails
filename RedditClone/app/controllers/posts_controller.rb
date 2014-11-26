@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only:  [:destroy, :new, :edit]
   respond_to :html
 
   # GET /posts
@@ -95,6 +96,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:url, :text, :community_id)
+      params.require(:post).permit(:id, :title, :url, :text, :community_id)
     end
 end

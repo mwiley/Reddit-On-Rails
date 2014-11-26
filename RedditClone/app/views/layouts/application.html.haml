@@ -10,7 +10,7 @@
       .container
         .navbar-header
           .navbar-brand
-            RedditClone
+            =link_to 'RedditClone', root_path
         .navbar-text.navbar-right
           - if user_signed_in?
             Signed in as #{current_user.email}. Not you?
