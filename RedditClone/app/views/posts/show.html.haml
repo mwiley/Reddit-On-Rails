@@ -1,24 +1,29 @@
-.col-sm-8
+.row
   %p#notice= notice
-  %p
-    %strong Url:
-    = @post.url
-  %p
-    %strong Text:
-    = @post.text
-  - if @post.user
+  .col-sm-1
+    = render 'vote', post: @post
+  .col-sm-7
     %p
-      %strong User:
-      = @post.user.email
-  %p
-    %strong Community:
-    = @post.community.name
-  = link_to 'Edit', edit_post_path(@post)
-  |
-  \#{link_to 'Back', posts_path}
+      %strong Url:
+      = @post.url
+    %p
+      %strong Text:
+      = @post.text
+    - if @post.user
+      %p
+        %strong User:
+        = @post.user.email
+    %p
+      %strong Community:
+      = @post.community.name
+    = link_to 'Edit', edit_post_path(@post)
+    |
+    \#{link_to 'Back', posts_path}
+  .col-sm-4
+    .panel
+      Subscribe:
 
-  = render 'vote'
-
+.row
   .comments
     - @comments.each do |comment|
       .panel.panel-default
@@ -29,6 +34,3 @@
       %br
 
   = render 'comments/form'
-.col-sm-4
-  .panel
-    Subscribe:

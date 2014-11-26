@@ -1,7 +1,6 @@
 .row
-  = @post.get_upvotes.size - @post.get_downvotes.size
-  votes
+  = link_to '', post_upvote_path(post), class: "glyphicon glyphicon-chevron-up"
 .row
-  = link_to 'Upvote', post_upvote_path(@post)
+  = post.get_upvotes.size - post.get_downvotes.size
 .row
-  = link_to 'Downvote', post_downvote_path(@post)
+  = link_to '',  post_downvote_path(post), class: "glyphicon glyphicon-chevron-down"
