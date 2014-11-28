@@ -27,10 +27,16 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    acts_as_commentable_with_threading (2.0.0)
+      activerecord (>= 4.0)
+      activesupport (>= 4.0)
+      awesome_nested_set (>= 3.0)
     acts_as_votable (0.10.0)
     arel (5.0.1.20140414130214)
     autoprefixer-rails (4.0.1)
       execjs
+    awesome_nested_set (3.0.1)
+      activerecord (>= 4.0.0, < 5)
     bcrypt (3.1.9-x86-mingw32)
     better_errors (2.0.0)
       coderay (>= 1.0.0)
@@ -108,6 +114,9 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    simple_form (3.1.0)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     sprockets (2.11.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -137,8 +146,10 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  acts_as_commentable_with_threading
   acts_as_votable (~> 0.10.0)
   autoprefixer-rails
+  awesome_nested_set
   better_errors
   bootstrap-sass
   coffee-rails (~> 4.0.0)
@@ -150,6 +161,7 @@ DEPENDENCIES
   rails (= 4.1.7)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  simple_form
   sqlite3
   turbolinks
   tzinfo-data

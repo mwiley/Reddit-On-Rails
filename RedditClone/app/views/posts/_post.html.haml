@@ -17,7 +17,7 @@
       to
       = link_to post.community.name, community_by_name_path(post.community)
       %br
-      = link_to post.comments.size.to_s + " comment".pluralize(post.comments.size), post_path(post)
+      = link_to post.comment_threads.size.to_s + " comment".pluralize(post.comment_threads.size), post_path(post)
       = link_to 'Edit', edit_post_path(post)
       = link_to 'Destroy', post , method: :delete, data: { confirm: 'Are you sure?' }
       %hr

@@ -6,13 +6,5 @@
     = render @post
 
 .row
-  .comments
-    - @comments.each do |comment|
-      .panel.panel-default
-        .panel-heading
-          = comment.user.email
-        .panel-body
-          = comment.text
-      %br
-
-  = render 'comments/form'
+  = render :partial => 'comments/form', :locals => { :comment => @comment }
+  = render :partial => 'comments/comment', :collection => @comments, :as => :comment

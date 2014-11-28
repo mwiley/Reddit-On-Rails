@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
   has_many :post_votes
 
   acts_as_votable
+  acts_as_commentable
 
   validates_presence_of :community, :title
 end

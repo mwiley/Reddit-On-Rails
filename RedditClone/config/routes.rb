@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :comments, :only => [:create, :destroy]
+
   get '/r/:community', to: 'posts#index', as: :community_by_name
   get '/r/:community/:post_id', to: 'posts#show'
 
@@ -10,7 +12,6 @@ Rails.application.routes.draw do
   end
 
   resources :posts do
-    resources :comments
     resources :post_votes
     get 'upvote', to: 'posts#upvote', as: :upvote
     get 'downvote', to: 'posts#downvote', as: :downvote
