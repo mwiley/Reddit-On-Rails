@@ -1,7 +1,20 @@
 %div.comment{ :id => "comment-#{comment.id}" }
-  %hr
-  = link_to "×", comment_path(comment), :method => :delete, :remote => true, :confirm => "Are you sure you want to remove this comment?", :disable_with => "×", :class => 'close'
-  %h4
-    = comment.user.username
-    %small= comment.updated_at
-  %p= comment.body
+  .col-sm-1
+    %br
+    .row
+      = link_to '', comment_upvote_path(comment), class: "glyphicon glyphicon-chevron-up"
+    .row
+      = comment.get_upvotes.size - comment.get_downvotes.size
+    .row
+      = link_to '',  comment_downvote_path(comment), class: "glyphicon glyphicon-chevron-down"
+  .col-sm-7
+    %hr
+    = link_to "×", comment_path(comment), :method => :delete, :remote => true,
+     :confirm => "Are you sure you want to remove this comment?", :disable_with => "×", :class => 'close'
+    %h4
+      = comment.user.username
+      %small= comment.updated_at
+    %p= comment.body
+
+    = if comment.has_children?
+      = render :partial => 'comments/comment', :collection => comment.children, :as => :comment

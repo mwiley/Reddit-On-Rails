@@ -45,6 +45,18 @@ class CommentsController < ApplicationController
     end
   end
 
+  def upvote
+    @comment = Comment.find params[:comment_id]
+    @comment.liked_by current_user
+    redirect_to :back
+  end
+
+  def downvote
+    @comment = Comment.find params[:comment_id]
+    @comment.downvote_by current_user
+    redirect_to :back
+  end
+
   private
     def set_comment
       @comment = Comment.find(params[:id])

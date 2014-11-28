@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @comments = @post.comment_threads.order('created_at desc')
+    @comments = @post.root_comments.order('created_at desc')
     @comment = Comment.build_from(@post, current_user.id, "")
 
     @community = @post.community
