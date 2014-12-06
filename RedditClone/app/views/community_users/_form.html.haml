@@ -1,0 +1,7 @@
+= form_for [@community, @community_user] do |f|
+  .field
+    = f.label :subscriber
+    %br
+      = f.check_box :subscriber
+  .actions
+    = f.submit

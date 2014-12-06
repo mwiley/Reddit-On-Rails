@@ -1,9 +1,5 @@
-.col-sm-8
+.col-sm-9
   = render @posts
 
-.col-sm-4
-  = link_to 'Submit a New Post', new_post_path, class: "btn btn-default"
-  = link_to 'Create a New Community', new_community_path, class: "btn btn-default"
-  - if @community_user
-    .panel
-      = render 'community_users/form'
+.col-sm-3
+  = render 'sidebar'

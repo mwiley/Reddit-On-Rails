@@ -28,12 +28,14 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @comments = @post.root_comments.order('created_at desc')
-    @comment = Comment.build_from(@post, current_user.id, "")
+
+    if current_user
+      @comment = Comment.build_from(@post, current_user.id, "")
+      @community_user = current_user.communities.new
+    end
 
     @community = @post.community
-    @community_user = current_user.communities.new
 
-    @post_vote = @post.post_votes.new
   end
 
   # GET /posts/new
@@ -98,10 +100,23 @@ class PostsController < ApplicationController
     redirect_to post_path(@post)
   end
 
+  def reply
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+      if params[:community]
+        @community = Community.find_by_name(params[:community])
+        @posts =  @community.posts
+        if @community.community_users.empty?
+          @community_user = @community.community_users.new
+        else
+          @community_user = @community.community_users.last
+        end
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

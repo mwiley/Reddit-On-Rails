@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
     Post.joins('INNER JOIN community_users ON posts.community_id = community_users.community_id')
         .where(community_users: {subscriber: true, user_id: self.id})
   end
+
+  def subscribes_to?(community)
+    community.community_users.where(community_users: {subscriber: true, user_id: self.id})
+  end
 end

@@ -35,6 +35,10 @@ class CommunitiesController < ApplicationController
     respond_with(@community)
   end
 
+  def subscribe
+    
+  end
+
   private
     def set_community
       @community = Community.find_by_name(params[:id])
