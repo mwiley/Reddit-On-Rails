@@ -10,13 +10,13 @@ class Post < ActiveRecord::Base
 
   def self.subscriptions(user)
     if user
-      Post.joins(:community)
-          .joins('INNER JOIN community_users ON posts.community_id = community_users.community_id')
-          .where(communities: {default: true})
-          .where.not(community_users: {user_id: user.id, subscriber: false}) &&
-
-      Post.joins('INNER JOIN community_users ON posts.community_id = community_users.community_id')
-          .where(community_users: {user_id: user.id, subscriber: true})
+      (Post.joins(:community)
+          .where(communities: {default: true}) +
+       Post.joins('INNER JOIN community_users ON posts.community_id = community_users.community_id')
+          .where(community_users: {user_id: user.id, subscriber: true}) -
+       Post.joins('INNER JOIN community_users ON posts.community_id = community_users.community_id')
+          .where(community_users: {user_id: user.id, subscriber: false})
+      ).uniq
     else
       Post.joins(:community)
           .where(communities: {default: true})
