@@ -1,5 +1,6 @@
 class CommunityUsersController < ApplicationController
   before_action :set_community_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only:  [:destroy, :new, :edit]
   respond_to :html
 
   def index
@@ -44,6 +45,6 @@ class CommunityUsersController < ApplicationController
     end
 
     def community_user_params
-      params.require(:community_user).permit(:user_id, :community_id, :admin, :subscriber, :banned)
+      params.require(:community_user).permit(:user_id, :community_id, :subscriber)
     end
 end
