@@ -41,6 +41,10 @@ group :development do
   gem "better_errors"
 end
 
+gem 'jquery-ui-rails', github: 'joliss/jquery-ui-rails'
+gem 'formtastic', github: 'justinfrench/formtastic'
+gem 'activeadmin', github: 'activeadmin'
+
 gem 'devise'
 gem 'haml'
 gem 'bootstrap-sass'
@@ -50,3 +54,4 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'awesome_nested_set'
 gem 'simple_form'
 gem 'acts_as_commentable_with_threading'
+
