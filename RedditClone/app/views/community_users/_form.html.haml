@@ -1,7 +1,6 @@
 = form_for [@community, @community_user] do |f|
   .field
-    = f.label :subscriber
-    %br
-      = f.check_box :subscriber
+    = f.check_box :subscriber
+    = f.label :subscriber, "Subscribed"
   .actions
-    = f.submit
+    = f.submit "Update Subscription", class: "btn btn-default"

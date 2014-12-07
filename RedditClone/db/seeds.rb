@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+[{name: 'wtf'}, {private: 'false'},
+ {name: 'pics'},{private: 'false'}].each do |c|
+  Community.create(c).save
+end

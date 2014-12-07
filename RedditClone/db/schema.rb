@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126224544) do
+ActiveRecord::Schema.define(version: 20141207001301) do
 
   create_table "comments", force: true do |t|
     t.integer  "commentable_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20141126224544) do
     t.boolean  "private"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "default"
   end
 
   create_table "community_users", force: true do |t|
