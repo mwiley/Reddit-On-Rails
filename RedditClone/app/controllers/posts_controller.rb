@@ -16,11 +16,7 @@ class PostsController < ApplicationController
       end
 
     else
-      if current_user
-        @posts = Post.subscriptions(current_user)
-      else
-        @posts = Post.all
-      end
+      @posts = Post.subscriptions(current_user)
     end
   end
 
