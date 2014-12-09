@@ -36,7 +36,7 @@ communities.each do |c|
   Community.create(c).save
 end
 
-for post_id in 0..100 do
+for post_id in 0..50 do
   user = (1..USER_COUNT).to_a.sample
   post = Post.new(
           title: Faker::Lorem.sentence,

@@ -2,11 +2,11 @@
   .row
     .col-sm-1.comment-vote
       .row
-        = link_to '', comment_upvote_path(comment), class: "glyphicon glyphicon-chevron-up"
+        = link_to '', comment_upvote_path(comment), class: ApplicationHelper.upvote_class(current_user)
       .row
         = comment.get_upvotes.size - comment.get_downvotes.size
       .row
-        = link_to '',  comment_downvote_path(comment), class: "glyphicon glyphicon-chevron-down"
+        = link_to '',  comment_downvote_path(comment), class: ApplicationHelper.downvote_class(current_user)
     .col-sm-8
       %hr
       - if current_user && current_user.id == comment.id
