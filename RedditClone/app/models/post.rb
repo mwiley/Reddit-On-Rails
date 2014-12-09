@@ -8,6 +8,8 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :community, :title
 
+  max_paginates_per 20
+
   def self.subscriptions(user)
     if user
       (Post.joins(:community)

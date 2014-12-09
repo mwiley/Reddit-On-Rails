@@ -1,23 +1,24 @@
 %div.comment{ :id => "comment-#{comment.id}" }
-  .col-sm-1.comment-vote
-    .row
-      = link_to '', comment_upvote_path(comment), class: "glyphicon glyphicon-chevron-up"
-    .row
-      = comment.get_upvotes.size - comment.get_downvotes.size
-    .row
-      = link_to '',  comment_downvote_path(comment), class: "glyphicon glyphicon-chevron-down"
-  .col-sm-8
-    %hr
-    - if current_user && current_user.id == comment.id
-      = link_to "×", comment_path(comment), :method => :delete, :remote => true,
-      :confirm => "Are you sure you want to remove this comment?", :disable_with => "×", :class => 'close'
-    %h4
-      = comment.user.username
-      %small= comment.updated_at
-    %p= comment.body
+  .row
+    .col-sm-1.comment-vote
+      .row
+        = link_to '', comment_upvote_path(comment), class: "glyphicon glyphicon-chevron-up"
+      .row
+        = comment.get_upvotes.size - comment.get_downvotes.size
+      .row
+        = link_to '',  comment_downvote_path(comment), class: "glyphicon glyphicon-chevron-down"
+    .col-sm-8
+      %hr
+      - if current_user && current_user.id == comment.id
+        = link_to "×", comment_path(comment), :method => :delete, :remote => true,
+        :confirm => "Are you sure you want to remove this comment?", :disable_with => "×", :class => 'close'
+      %h4
+        = comment.user.email
+        %small= time_ago_in_words comment.updated_at
+      %p= comment.body
 
-    - if current_user
-      = link_to "Reply", comment_reply_path(comment), :remote => true
+      - if current_user
+        = link_to "Reply", comment_reply_path(comment), :remote => true
 
-    = if comment.has_children?
-      = render :partial => 'comments/comment', :collection => comment.children, :as => :comment
+      = if comment.has_children?
+        = render :partial => 'comments/comment', :collection => comment.children, :as => :comment

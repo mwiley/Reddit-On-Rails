@@ -14,10 +14,13 @@ class PostsController < ApplicationController
       else
         @community_user = @community.community_users.last
       end
-
     else
       @posts = Post.subscriptions(current_user)
     end
+
+    @posts.to_a.sort_by! { |post| post.created_at }.reverse
+    @posts = Kaminari.paginate_array(@posts).page params[:page]
+    respond_with @posts
   end
 
   # GET /posts/1
@@ -48,6 +51,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+    @post.liked_by @post.user
 
     respond_to do |format|
       if @post.save
