@@ -23,7 +23,7 @@ class CommunitiesController < ApplicationController
   def create
     @community = Community.new(community_params)
     @community.save
-    respond_with(@community)
+    redirect_to community_by_name_path(@community.name)
   end
 
   def update
@@ -46,6 +46,6 @@ class CommunitiesController < ApplicationController
     end
 
     def community_params
-      params.require(:community).permit(:name, :private)
+      params.require(:community).permit(:name, :private, :description)
     end
 end

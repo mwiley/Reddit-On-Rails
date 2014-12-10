@@ -18,8 +18,8 @@ class PostsController < ApplicationController
       @posts = Post.subscriptions(current_user)
     end
 
-    @posts.to_a.sort_by! { |post| post.created_at }.reverse
-    @posts = Kaminari.paginate_array(@posts).page params[:page]
+    @posts.to_a.sort_by! { |post| post.created_at }
+    @posts = Kaminari.paginate_array(@posts.reverse).page params[:page]
     respond_with @posts
   end
 
@@ -51,8 +51,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+    @post.save
     @post.liked_by @post.user
-
     respond_with @post
   end
 

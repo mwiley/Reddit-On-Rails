@@ -6,7 +6,7 @@ module ApplicationHelper
       button_class = "vote-button"
     end
 
-    "glyphicon glyphicon-chevron-up " + button_class
+    "glyphicon glyphicon-arrow-up " + button_class
   end
 
   def downvote_class(votable, current_user)
@@ -16,6 +16,6 @@ module ApplicationHelper
       button_class = "vote-button"
     end
 
-    "glyphicon glyphicon-chevron-down " + button_class
+    "glyphicon glyphicon-arrow-down " + button_class
   end
 end

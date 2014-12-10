@@ -4,7 +4,7 @@
       = link_to '', post_upvote_path(post), remote: true, class: upvote_class(post, current_user),
       id: "post-upvote-"+post.id.to_s
     .row
-      %span{:id => "post-count-"+post.id.to_s}
+      %span.votes{:id => "post-count-"+post.id.to_s}
         = post.get_upvotes.size - post.get_downvotes.size
     .row
       = link_to '',  post_downvote_path(post), remote: true, class: downvote_class(post, current_user),

@@ -2,7 +2,13 @@
   .btn-group-vertical
     = link_to 'Submit a New Post', new_post_path, class: "btn btn-primary"
     = link_to 'Create a New Community', new_community_path, class: "btn btn-default"
-.row
-  - if current_user && @community_user
+
+- if current_user && @community_user
+  .row
     %hr
     = render 'community_users/form'
+
+-if @community
+  %hr
+  .row
+    = @community.description

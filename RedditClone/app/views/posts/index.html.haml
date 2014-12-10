@@ -1,5 +1,8 @@
 .row
   .col-sm-10
+    - if @posts.empty?
+      .panel.panel-default
+        .panel-body No posts here!
     = render @posts
 
   .col-sm-2

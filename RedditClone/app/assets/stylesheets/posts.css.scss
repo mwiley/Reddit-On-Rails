@@ -2,22 +2,37 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#comments {
+  position: relative;
+  left: -40px;
+}
+
 .comment-vote {
-  margin-top: 30px;
+  position: relative;
+  top: 60px;
+  left: 40px;
 }
 
 .upvote-button {
   color: #cc342d;
+
 }
 
 .downvote-button {
-  color: #007499;
+  color: #008499;
 }
 
 .vote-button {
-  color: #333333;
+  color: #b3b3b3;
 }
 
 a.glyphicon {
  text-decoration: none;
 }
+
+.votes {
+  position: relative;
+  left: 3px;
+  bottom: 3px;
+}
+

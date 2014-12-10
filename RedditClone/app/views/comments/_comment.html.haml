@@ -5,7 +5,7 @@
         = link_to '', comment_upvote_path(comment), remote: true, class: upvote_class(comment, current_user),
         id: "comment-upvote-"+comment.id.to_s
       .row
-        %span{:id => "comment-count-"+comment.id.to_s}= comment.get_upvotes.size - comment.get_downvotes.size
+        %span.votes{:id => "comment-count-"+comment.id.to_s}= comment.get_upvotes.size - comment.get_downvotes.size
       .row
         = link_to '',  comment_downvote_path(comment), remote: true, class: downvote_class(comment, current_user),
         id: "comment-downvote-"+comment.id.to_s

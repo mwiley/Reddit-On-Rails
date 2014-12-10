@@ -8,9 +8,10 @@
 .row
   %h4 Comments:
 
-.row.comments
+.row
   .col-sm-12
     - if current_user
       = render :partial => 'comments/form', :locals => { :comment => @comment }
-    = render :partial => 'comments/comment', :collection => @comments, :as => :comment
+    #comments
+      = render :partial => 'comments/comment', :collection => @comments, :as => :comment
 
