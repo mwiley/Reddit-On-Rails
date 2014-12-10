@@ -1,0 +1,1 @@
+$("#post-count-<%= @post.id.to_s %>").html('<%= @post.get_upvotes.size - @post.get_downvotes.size %>');

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only:  [:destroy, :new, :edit]
-  respond_to :html
+  respond_to :html, :js
 
   # GET /posts
   # GET /posts.json
@@ -53,15 +53,7 @@ class PostsController < ApplicationController
     @post.user = current_user
     @post.liked_by @post.user
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to post_path(@post), notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
+    respond_with @post
   end
 
   # PATCH/PUT /posts/1
@@ -95,7 +87,7 @@ class PostsController < ApplicationController
     else
       @post.liked_by current_user
     end
-    redirect_to post_path(@post)
+    redirect_to post_path(@post, format: :js)
   end
 
   def downvote
@@ -105,7 +97,7 @@ class PostsController < ApplicationController
     else
       @post.downvote_by current_user
     end
-    redirect_to post_path(@post)
+    redirect_to post_path(@post, format: :js)
   end
 
   def reply
