@@ -18,4 +18,16 @@ module ApplicationHelper
 
     "glyphicon glyphicon-arrow-down " + button_class
   end
+
+  def upvote_button(path, item, current_user, id_tag)
+    link_to '', path, remote: true,
+            class: upvote_class(item, current_user), id: id_tag + "-upvote-" + item.id.to_s
+  end
+
+  def downvote_button(path, item, current_user, id_tag)
+    link_to '', path, remote: true,
+            class: downvote_class(item, current_user), id: id_tag + "-downvote-" + item.id.to_s
+  end
+
+
 end

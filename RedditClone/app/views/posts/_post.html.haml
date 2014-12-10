@@ -1,14 +1,11 @@
 .row
-  .col-sm-1
+  .col-sm-1.post-vote
     .row
-      = link_to '', post_upvote_path(post), remote: true, class: upvote_class(post, current_user),
-      id: "post-upvote-"+post.id.to_s
+      = upvote_button(post_upvote_path(post), post, current_user, "post")
     .row
-      %span.votes{:id => "post-count-"+post.id.to_s}
-        = post.get_upvotes.size - post.get_downvotes.size
+      %span.votes{:id => "post-count-"+post.id.to_s}= post.get_upvotes.size - post.get_downvotes.size
     .row
-      = link_to '',  post_downvote_path(post), remote: true, class: downvote_class(post, current_user),
-      id: "post-downvote-"+post.id.to_s
+      = downvote_button(post_upvote_path(post), post, current_user, "post")
   .col-sm-8
     .row
       = link_to post.title, post.url

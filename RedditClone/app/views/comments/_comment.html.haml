@@ -2,14 +2,13 @@
   .row
     .col-sm-1.comment-vote
       .row
-        = link_to '', comment_upvote_path(comment), remote: true, class: upvote_class(comment, current_user),
-        id: "comment-upvote-"+comment.id.to_s
+        = upvote_button(comment_upvote_path(comment), comment, current_user, "comment")
       .row
         %span.votes{:id => "comment-count-"+comment.id.to_s}= comment.get_upvotes.size - comment.get_downvotes.size
       .row
-        = link_to '',  comment_downvote_path(comment), remote: true, class: downvote_class(comment, current_user),
-        id: "comment-downvote-"+comment.id.to_s
-    .col-sm-8
+        = downvote_button(comment_upvote_path(comment), comment, current_user, "comment")
+
+    .col-sm-9
       %hr
       - if current_user && current_user.id == comment.user_id
         = link_to "×", comment_path(comment), :method => :delete, :remote => true,

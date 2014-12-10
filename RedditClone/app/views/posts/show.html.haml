@@ -1,17 +1,17 @@
 .row
   %p#notice= notice
 
-
 .row
   = render @post
 
 .row
   %h4 Comments:
 
-.row
-  .col-sm-12
-    - if current_user
+- if current_user
+  .row
+    .col-sm-8
       = render :partial => 'comments/form', :locals => { :comment => @comment }
-    #comments
-      = render :partial => 'comments/comment', :collection => @comments, :as => :comment
+.row
+  .col-sm-12#comments
+    = render :partial => 'comments/comment', :collection => @comments, :as => :comment
 

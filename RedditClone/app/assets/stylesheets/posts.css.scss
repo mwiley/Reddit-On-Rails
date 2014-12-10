@@ -7,10 +7,15 @@
   left: -40px;
 }
 
-.comment-vote {
+.comment-vote{
   position: relative;
   top: 60px;
   left: 40px;
+}
+
+.post-vote {
+  position: relative;
+  left: 30px;
 }
 
 .upvote-button {
@@ -19,11 +24,11 @@
 }
 
 .downvote-button {
-  color: #008499;
+  color: #00a3ba;
 }
 
 .vote-button {
-  color: #b3b3b3;
+  color: #d1d1d1;
 }
 
 a.glyphicon {
