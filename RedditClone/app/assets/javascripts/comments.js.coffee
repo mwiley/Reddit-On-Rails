@@ -17,7 +17,7 @@ jQuery ->
     $(xhr.responseText).hide().insertAfter($(this)).show('slow')
 
   # Delete a comment
-  $('.comments')
+  $('.close')
   .on "ajax:beforeSend", ".comment", ->
     $(this).fadeTo('fast', 0.5)
   .on "ajax:success", ".comment", ->
