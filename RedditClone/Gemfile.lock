@@ -40,6 +40,14 @@ GIT
       rails (>= 3.1)
       railties (>= 3.1)
 
+GIT
+  remote: git@github.com:kossnocorp/jquery.turbolinks.git
+  revision: 6f336f1d3acceef95f9289129b64b00edc5709e7
+  specs:
+    jquery-turbolinks (2.1.0)
+      railties (>= 3.1.0)
+      turbolinks
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -223,6 +231,7 @@ DEPENDENCIES
   haml
   jbuilder (~> 2.0)
   jquery-rails
+  jquery-turbolinks!
   jquery-ui-rails!
   kaminari
   rails (= 4.1.7)
