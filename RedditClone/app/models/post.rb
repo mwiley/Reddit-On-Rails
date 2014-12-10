@@ -6,7 +6,11 @@ class Post < ActiveRecord::Base
   acts_as_votable
   acts_as_commentable
 
-  validates_presence_of :community, :title
+  validates_presence_of :community
+
+  validates :title,
+            presence: true,
+            length: { maximum: 64 }
 
   max_paginates_per 20
 

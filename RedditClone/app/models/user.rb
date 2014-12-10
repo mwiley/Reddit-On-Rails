@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   acts_as_voter
 
+  validates :email, presence: true
+
   has_many :community_users
   has_many :communities, through: :community_users
 

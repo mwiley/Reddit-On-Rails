@@ -22,8 +22,12 @@ class CommunitiesController < ApplicationController
 
   def create
     @community = Community.new(community_params)
-    @community.save
-    redirect_to community_by_name_path(@community.name)
+    if @community.save
+      redirect_to community_by_name_path(@community.name), notice: 'Post was successfully destroyed.'
+    else
+      render :new
+    end
+
   end
 
   def update

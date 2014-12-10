@@ -1,24 +1,7 @@
-= form_for([@community, @post]) do |f|
-  - if @post.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@post.errors.count, "error")
-        prohibited this post from being saved:
-      %ul
-        - @post.errors.full_messages.each do |message|
-          %li= message
-  .field
-    = f.label :community_id
-    = f.collection_select :community_id, Community.all, :id, :name, {include_blank: true}, class: 'form-control combobox'
-    =# f.text_field :community_id
-  .form-group
-    = f.label :title
-    = f.text_field :title, class: 'form-control'
-  .form-group
-    = f.label :url
-    = f.text_field :url, class: 'form-control'
-  .form-group
-    = f.label :text
-    = f.text_field :text, class: 'form-control'
-  .actions
-    = f.submit class: "btn btn-primary"
+= simple_form_for [@community, @post] do |f|
+  = f.label "Community"
+  = f.collection_select :community_id, Community.all, :id, :name, {include_blank: true}, class: 'form-control combobox'
+  = f.input :title
+  = f.input :url
+  = f.input :text
+  = f.button :submit
