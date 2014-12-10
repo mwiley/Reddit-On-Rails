@@ -18,9 +18,9 @@ jQuery ->
 
   # Delete a comment
   $(document)
-  .on "ajax:beforeSend", ".comment", ->
+  .on "ajax:beforeSend", ".comment.delete", ->
     $(this).fadeTo('fast', 0.5)
-  .on "ajax:success", ".comment", ->
+  .on "ajax:success", ".comment.delete", ->
     $(this).hide('fast')
-  .on "ajax:error", ".comment", ->
+  .on "ajax:error", ".comment.delete", ->
     $(this).fadeTo('fast', 1)

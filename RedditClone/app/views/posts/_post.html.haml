@@ -1,11 +1,11 @@
 .row
   .col-sm-1
     .row
-      = link_to '', post_upvote_path(post), class: ApplicationHelper.upvote_class(current_user)
+      = link_to '', post_upvote_path(post), class: ApplicationHelper.upvote_class(post, current_user)
     .row
       = post.get_upvotes.size - post.get_downvotes.size
     .row
-      = link_to '',  post_downvote_path(post), class: ApplicationHelper.downvote_class(current_user)
+      = link_to '',  post_downvote_path(post), class: ApplicationHelper.downvote_class(post, current_user)
   .col-sm-8
     .row
       = link_to post.title, post.url

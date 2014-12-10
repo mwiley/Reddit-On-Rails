@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  respond_to :html
+  respond_to :html, :js
 
   def index
     @comments = Comment.all
@@ -47,14 +47,22 @@ class CommentsController < ApplicationController
 
   def upvote
     @comment = Comment.find params[:comment_id]
-    @comment.liked_by current_user
-    redirect_to :back
+    if current_user && current_user.voted_up_on?(@comment)
+      @comment.unliked_by current_user
+    else
+      @comment.liked_by current_user
+    end
+    render :show
   end
 
   def downvote
     @comment = Comment.find params[:comment_id]
-    @comment.downvote_by current_user
-    redirect_to :back
+    if current_user && current_user.voted_down_on?(@comment)
+      @comment.undisliked_by current_user
+    else
+      @comment.downvote_by current_user
+    end
+    render :show
   end
 
   private

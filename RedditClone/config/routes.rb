@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
-  resources :comments, :only => [:create, :destroy] do
+  resources :comments, :only => [:create, :destroy, :show] do
     get 'upvote', to: 'comments#upvote', as: :upvote
     get 'downvote', to: 'comments#downvote', as: :downvote
     get 'reply', to: "comments#reply", as: :reply

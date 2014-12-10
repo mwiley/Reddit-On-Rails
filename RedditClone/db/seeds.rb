@@ -9,12 +9,6 @@
 USER_COUNT = 20
 COMMUNITY_COUNT = 6
 
-User.new(
-    email: "masonwiley92@gmail.com",
-    password: "a",
-    password_confirmation: "a"
-).save
-
 for i in 1..USER_COUNT do
   User.new(
           email: Faker::Internet.email,
@@ -48,7 +42,7 @@ for post_id in 0..50 do
   post.save!
   post.liked_by(User.find(user))
 
-  for i in 2..20 do
+  for i in 1..20 do
     if rand(100) > 40
       post.liked_by User.find(i)
     else

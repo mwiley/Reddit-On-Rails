@@ -90,13 +90,21 @@ class PostsController < ApplicationController
 
   def upvote
     @post = Post.find params[:post_id]
-    @post.liked_by current_user
+    if current_user && current_user.voted_up_on?(@post)
+      @post.unliked_by current_user
+    else
+      @post.liked_by current_user
+    end
     redirect_to post_path(@post)
   end
 
   def downvote
     @post = Post.find params[:post_id]
-    @post.downvote_by current_user
+    if current_user && current_user.voted_down_on?(@post)
+      @post.undisliked_by current_user
+    else
+      @post.downvote_by current_user
+    end
     redirect_to post_path(@post)
   end
 

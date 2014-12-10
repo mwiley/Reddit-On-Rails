@@ -1,0 +1,1 @@
+$("#count-<%= @comment.id.to_s %>").html('<%= @comment.get_upvotes.size - @comment.get_downvotes.size %>');
