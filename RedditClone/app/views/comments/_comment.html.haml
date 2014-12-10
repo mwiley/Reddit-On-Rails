@@ -6,7 +6,7 @@
       .row
         %span.votes{:id => "comment-count-"+comment.id.to_s}= comment.get_upvotes.size - comment.get_downvotes.size
       .row
-        = downvote_button(comment_upvote_path(comment), comment, current_user, "comment")
+        = downvote_button(comment_downvote_path(comment), comment, current_user, "comment")
 
     .col-sm-9
       %hr
