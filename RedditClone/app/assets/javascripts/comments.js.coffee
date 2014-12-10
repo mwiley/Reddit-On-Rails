@@ -14,7 +14,7 @@ $(document).on 'ready ajax:success', ->
     .removeClass('uneditable-input')
     .removeAttr('disabled', 'disabled')
     .val('');
-    $(xhr.responseText).hide().insertBefore( $(".comment:first") ).show('slow')
+    $(xhr.responseText).hide().prependTo( $("#comments") ).show('slow')
 
   # Delete a comment
   $("a.close")
