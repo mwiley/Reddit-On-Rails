@@ -1,11 +1,11 @@
 .row
   .col-sm-1
     .row
-      = link_to '', post_upvote_path(post), remote: true, class: ApplicationHelper.upvote_class(post, current_user)
+      = link_to '', post_upvote_path(post), remote: true, class: upvote_class(post, current_user)
     .row
       %span{:id => "post-count-"+post.id.to_s}= post.get_upvotes.size - post.get_downvotes.size
     .row
-      = link_to '',  post_downvote_path(post), remote: true, class: ApplicationHelper.downvote_class(post, current_user)
+      = link_to '',  post_downvote_path(post), remote: true, class: downvote_class(post, current_user)
   .col-sm-8
     .row
       = link_to post.title, post.url
@@ -13,7 +13,7 @@
       = 'Posted ' + time_ago_in_words(post.created_at) + ' by ' + post.user.email + ' to '
       = link_to post.community.name, community_by_name_path(post.community)
       %br
-      = link_to post.comment_threads.size.to_s + " comment".pluralize(post.comment_threads.size), post_by_title_path(post.community, post)
+      = comments_link post
       - if current_user && current_user.id == post.user.id
         |
         = link_to 'Edit', edit_post_path(post)

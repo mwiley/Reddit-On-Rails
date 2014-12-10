@@ -2,14 +2,14 @@
   .row
     .col-sm-1.comment-vote
       .row
-        = link_to '', comment_upvote_path(comment), remote: true, class: ApplicationHelper.upvote_class(comment, current_user)
+        = link_to '', comment_upvote_path(comment), remote: true, class: upvote_class(comment, current_user)
       .row
         %span{:id => "count-"+comment.id.to_s}= comment.get_upvotes.size - comment.get_downvotes.size
       .row
-        = link_to '',  comment_downvote_path(comment), remote: true, class: ApplicationHelper.downvote_class(comment, current_user)
+        = link_to '',  comment_downvote_path(comment), remote: true, class: downvote_class(comment, current_user)
     .col-sm-8
       %hr
-      - if current_user && current_user.id == comment.id
+      - if current_user && current_user.id == comment.user_id
         = link_to "×", comment_path(comment), :method => :delete, :remote => true,
         :confirm => "Are you sure you want to remove this comment?", :disable_with => "×", :class => 'close'
       %h4
