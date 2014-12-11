@@ -53,4 +53,22 @@ class Comment < ActiveRecord::Base
     self.get_upvotes.size - self.get_downvotes.size
   end
 
+  # Upvotes for the current user, or removes vote if already upvoted
+  def upvote(current_user)
+    if current_user && current_user.voted_up_on?(self)
+      self.unliked_by current_user
+    else
+      self.liked_by current_user
+    end
+  end
+
+  # Downvotes for the current user, or removes vote if already downvoted
+  def downvote(current_user)
+    if current_user && current_user.voted_down_on?(self)
+      self.undisliked_by current_user
+    else
+      self.downvote_by current_user
+    end
+  end
+
 end

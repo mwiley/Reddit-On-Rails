@@ -79,26 +79,14 @@ class PostsController < ApplicationController
 
   def upvote
     @post = Post.find params[:post_id]
-    if current_user && current_user.voted_up_on?(@post)
-      @post.unliked_by current_user
-    else
-      @post.liked_by current_user
-    end
+    @post.upvote current_user
     redirect_to post_path(@post, format: :js)
   end
 
   def downvote
     @post = Post.find params[:post_id]
-    if current_user && current_user.voted_down_on?(@post)
-      @post.undisliked_by current_user
-    else
-      @post.downvote_by current_user
-    end
+    @post.downvote current_user
     redirect_to post_path(@post, format: :js)
-  end
-
-  def reply
-    # TODO: respond with js that shows the form field
   end
 
   private

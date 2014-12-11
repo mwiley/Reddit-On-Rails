@@ -46,27 +46,19 @@ class CommentsController < ApplicationController
 
   def upvote
     @comment = Comment.find params[:comment_id]
-    if current_user && current_user.voted_up_on?(@comment)
-      @comment.unliked_by current_user
-    else
-      @comment.liked_by current_user
-    end
+    @comment.upvote current_user
+    render :show
+  end
+
+  def downvote
+    @comment = Comment.find params[:comment_id]
+    @comment.downvote current_user
     render :show
   end
 
   def reply
     @comment = Comment.find params[:comment_id]
     respond_with @comment
-  end
-
-  def downvote
-    @comment = Comment.find params[:comment_id]
-    if current_user && current_user.voted_down_on?(@comment)
-      @comment.undisliked_by current_user
-    else
-      @comment.downvote_by current_user
-    end
-    render :show
   end
 
   private
