@@ -19,7 +19,7 @@
       %p= comment.body
 
       - if current_user
-        = link_to "Reply", comment_reply_path(comment), :remote => true
+        = link_to "Reply", comment_reply_path(comment), :remote => true, class: "comment-reply"
 
       = if comment.has_children?
         = render :partial => 'comments/comment', :collection => comment.children, :as => :comment

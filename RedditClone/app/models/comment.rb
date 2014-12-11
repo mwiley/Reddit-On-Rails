@@ -8,6 +8,9 @@ class Comment < ActiveRecord::Base
   # want user to vote on the quality of comments.
   acts_as_votable
 
+  # add a like for the creator of the comment
+  after_save 'self.liked_by self.user'
+
   belongs_to :commentable, :polymorphic => true
 
   # NOTE: Comments belong to a user

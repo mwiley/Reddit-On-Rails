@@ -6,11 +6,14 @@ class Post < ActiveRecord::Base
   acts_as_votable
   acts_as_commentable
 
+  # add a like for the creator of the post
+  after_save 'self.liked_by self.user'
+
   validates_presence_of :community
 
   validates :title,
             presence: true,
-            length: { maximum: 64 }
+            length: { maximum: 128 }
 
   max_paginates_per 20
 

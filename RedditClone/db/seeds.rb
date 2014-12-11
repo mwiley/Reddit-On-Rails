@@ -18,12 +18,12 @@ for i in 1..USER_COUNT do
 end
 
 communities = [
-    {name: 'pics', private: 'false', default: 'true'},
-    {name: 'videos', private: 'false', default: 'true'},
-    {name: 'funny', private: 'false', default: 'true'},
-    {name: 'gifs', private: 'false', default: 'true'},
-    {name: 'wtf', private: 'false', default: 'true'},
-    {name: 'metal', private: 'false', default: 'false'}
+    {name: 'pics', private: 'false', default: 'true', description: Faker::Lorem.sentence},
+    {name: 'videos', private: 'false', default: 'true', description: Faker::Lorem.sentence},
+    {name: 'funny', private: 'false', default: 'true', description: Faker::Lorem.sentence},
+    {name: 'gifs', private: 'false', default: 'true', description: Faker::Lorem.sentence},
+    {name: 'wtf', private: 'false', default: 'true', description: Faker::Lorem.sentence},
+    {name: 'metal', private: 'false', default: 'false', description: Faker::Lorem.sentence}
 ]
 
 communities.each do |c|
@@ -40,7 +40,6 @@ for post_id in 0..50 do
           community_id: (1..COMMUNITY_COUNT).to_a.sample
   )
   post.save!
-  post.liked_by(User.find(user))
 
   for i in 1..20 do
     if rand(100) > 40

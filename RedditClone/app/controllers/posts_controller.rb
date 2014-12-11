@@ -52,7 +52,6 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     @post.save
-    @post.liked_by @post.user
     respond_with @post
   end
 
@@ -101,7 +100,7 @@ class PostsController < ApplicationController
   end
 
   def reply
-
+    # TODO: respond with js that shows the form field
   end
 
   private

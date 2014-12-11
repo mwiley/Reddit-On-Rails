@@ -24,3 +24,8 @@ $(document).on 'ready ajax:success', ->
       $(this).closest(".comment").hide('fast')
     .on "ajax:error", (evt, data, status, xhr) ->
       $(this).closest(".comment").fadeTo('fast', 1)
+
+  # Reply to a comment
+  $("a.comment-reply")
+    .on "click", ->
+      alert "Hello world"
