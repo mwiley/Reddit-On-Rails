@@ -1,9 +1,9 @@
 module CommunitiesHelper
   def subscribe_class(current_user, community)
     if current_user.subscribed? community
-      "btn btn-primary"
+      "btn btn-primary btn-block"
     else
-      "btn btn-default"
+      "btn btn-default btn-block"
     end
   end
 
