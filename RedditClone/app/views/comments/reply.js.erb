@@ -1,1 +1,2 @@
-("<%= render :partial => 'comments/form', :locals => { :comment => @comment } %>").insertAfter( $("#comment-<%= @comment.id.to_s %>") );
+var form = '<%= escape_javascript( render :partial => 'comments/form', :locals => { :comment => @comment } )%>';
+$(" #comment-<%= @comment.id.to_s %> .comment-content ").append(form);

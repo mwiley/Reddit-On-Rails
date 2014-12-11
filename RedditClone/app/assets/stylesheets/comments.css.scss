@@ -1,3 +1,18 @@
 // Place all the styles related to the Comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#comments {
+  position: relative;
+  left: -40px;
+}
+
+.comment-vote{
+  position: relative;
+  top: 60px;
+  left: 40px;
+}
+
+.comment-form {
+  padding-top: 20px;
+}

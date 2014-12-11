@@ -8,7 +8,7 @@
       .row
         = downvote_button(comment_downvote_path(comment), comment, current_user, "comment")
 
-    .col-sm-9
+    .col-sm-9.comment-content
       %hr
       - if current_user && current_user.id == comment.user_id
         = link_to "×", comment_path(comment), :method => :delete, :remote => true,
