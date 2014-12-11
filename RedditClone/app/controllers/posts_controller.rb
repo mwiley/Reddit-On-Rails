@@ -10,24 +10,13 @@ class PostsController < ApplicationController
     if params[:community]
       @community = Community.find_by_name(params[:community])
       @posts =  @community.posts
-      if @community.community_users.empty?
-        @community_user = @community.community_users.new
-      else
-        @community_user = @community.community_users.last
-      end
     # viewing the main page
     else
       @posts = Post.subscriptions(current_user)
     end
 
-    # sort based on the parameter
-    if params[:sortby] == 'votes'
-      @posts.to_a.sort_by! { |post| post.total_votes }
-    else
-      @posts.to_a.sort_by! { |post| post.created_at }
-    end
-
-    # paginate the reulsts
+    # sort and paginate the results
+    @posts = Post.sort(@posts, params[:sortby])
     @posts = Kaminari.paginate_array(@posts.reverse).page params[:page]
     respond_with @posts
   end

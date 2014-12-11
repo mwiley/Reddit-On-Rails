@@ -2,8 +2,8 @@
   .col-sm-10
     .row
       %ol.breadcrumb.col-sm-3
-        %li= link_to "Top Posts", posts_path(sortby: 'votes')
-        %li= link_to "Newest Posts", posts_path
+        %li= link_to "Top Posts", sortby: 'votes'
+        %li= link_to "Newest Posts", sortby: 'new'
     .row
       - if @posts.empty?
         .panel.panel-default

@@ -11,11 +11,11 @@ Rails.application.routes.draw do
   end
 
   get '/r/:community', to: 'posts#index', as: :community_by_name
-  get '/r/:community/subscribe', to: 'community#subscribe', as: :community_subscribe
   get '/r/:community/:id', to: 'posts#show', as: :post_by_title
 
   resources :communities do
     resources :community_users
+    get 'subscribe', to: 'communities#subscribe', as: :subscribe
   end
 
   resources :posts do

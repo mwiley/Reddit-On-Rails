@@ -12,12 +12,22 @@ class User < ActiveRecord::Base
   has_many :community_users
   has_many :communities, through: :community_users
 
-  def subscribed
-    Post.joins('INNER JOIN community_users ON posts.community_id = community_users.community_id')
-        .where(community_users: {subscriber: true, user_id: self.id})
+  def subscribed?(community)
+    community_user = self.community_users.where(community_id: community.id).first_or_create
+    if community_user.subscriber
+      true
+    elsif community_user.subscriber == nil
+      true if community.default
+    else
+      false
+    end
   end
 
-  def subscribes_to?(community)
-    community.community_users.where(community_users: {subscriber: true, user_id: self.id})
+  def update_subscription(community)
+    community_user = self.community_users.where(community_id: community.id).first_or_create
+    # reverse the subscription status
+    community_user.subscriber = !community_user.subscriber
+    community_user.save!
   end
+
 end

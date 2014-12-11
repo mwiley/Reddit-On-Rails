@@ -36,4 +36,12 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def self.sort(posts, sortby)
+    if sortby == 'votes'
+      posts.to_a.sort_by! { |post| post.total_votes }
+    else
+      posts.to_a.sort_by! { |post| post.created_at }
+    end
+  end
+
 end

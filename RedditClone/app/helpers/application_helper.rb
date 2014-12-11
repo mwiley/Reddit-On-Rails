@@ -28,6 +28,4 @@ module ApplicationHelper
     link_to '', path, remote: true,
             class: downvote_class(item, current_user), id: id_tag + "-downvote-" + item.id.to_s
   end
-
-
 end

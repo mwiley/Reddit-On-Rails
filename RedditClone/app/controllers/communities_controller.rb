@@ -23,7 +23,7 @@ class CommunitiesController < ApplicationController
   def create
     @community = Community.new(community_params)
     if @community.save
-      redirect_to community_by_name_path(@community.name), notice: 'Post was successfully destroyed.'
+      redirect_to community_by_name_path(@community.name), notice: 'Community successfully created.'
     else
       render :new
     end
@@ -41,7 +41,9 @@ class CommunitiesController < ApplicationController
   end
 
   def subscribe
-    
+    @community = Community.find_by_name(params[:community_id])
+    current_user.update_subscription @community
+    redirect_to community_by_name_path(@community.name)
   end
 
   private

@@ -3,10 +3,10 @@
     = link_to 'Submit a New Post', new_post_path, class: "btn btn-primary"
     = link_to 'Create a New Community', new_community_path, class: "btn btn-default"
 
-- if current_user && @community_user
+- if current_user && @community
   .row
     %hr
-    = render 'community_users/form'
+      = subscribe_button(current_user, @community)
 
 -if @community
   %hr
