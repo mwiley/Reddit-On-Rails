@@ -1,2 +1,6 @@
-var form = '<%= escape_javascript( render :partial => 'comments/form', :locals => { :comment => Comment.new } )%>';
+var form = '<%=
+    escape_javascript(
+        render :partial => 'comments/form', :locals => { :comment => Comment.new }
+    )
+ %>';
 $(" #comment-<%= @comment.id.to_s %> .comment-content ").append(form);
