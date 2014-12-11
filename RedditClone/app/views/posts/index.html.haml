@@ -1,9 +1,14 @@
 .row
   .col-sm-10
-    - if @posts.empty?
-      .panel.panel-default
-        .panel-body No posts here!
-    = render @posts
+    .row
+      %ol.breadcrumb.col-sm-3
+        %li= link_to "Top Posts", posts_path(sortby: 'votes')
+        %li= link_to "Newest Posts", posts_path
+    .row
+      - if @posts.empty?
+        .panel.panel-default
+          .panel-body No posts here!
+      = render @posts
 
   .col-sm-2
     = render 'sidebar'

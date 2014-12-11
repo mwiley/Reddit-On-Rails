@@ -2,21 +2,25 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :community
   has_many :comments
-
   acts_as_votable
   acts_as_commentable
 
-  # add a like for the creator of the post
-  after_save 'self.liked_by self.user'
-
-  validates_presence_of :community
-
+  validates :community, presence: true
   validates :title,
             presence: true,
             length: { maximum: 128 }
 
   max_paginates_per 20
 
+  # add a like for the creator of the post
+  after_save 'self.liked_by self.user'
+
+  # gets the net votes for the post
+  def total_votes
+    self.get_upvotes.size - self.get_downvotes.size
+  end
+
+  # gets the posts that belong to a community the user subscribes to
   def self.subscriptions(user)
     if user
       (Post.joins(:community)
@@ -31,4 +35,5 @@ class Post < ActiveRecord::Base
           .where(communities: {default: true})
     end
   end
+
 end

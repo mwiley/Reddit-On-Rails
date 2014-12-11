@@ -48,4 +48,9 @@ class Comment < ActiveRecord::Base
   def self.find_commentable(commentable_str, commentable_id)
     commentable_str.constantize.find(commentable_id)
   end
+
+  def total_votes
+    self.get_upvotes.size - self.get_downvotes.size
+  end
+
 end

@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    # viewing a specific community's posts
     if params[:community]
       @community = Community.find_by_name(params[:community])
       @posts =  @community.posts
@@ -14,11 +15,19 @@ class PostsController < ApplicationController
       else
         @community_user = @community.community_users.last
       end
+    # viewing the main page
     else
       @posts = Post.subscriptions(current_user)
     end
 
-    @posts.to_a.sort_by! { |post| post.created_at }
+    # sort based on the parameter
+    if params[:sortby] == 'votes'
+      @posts.to_a.sort_by! { |post| post.total_votes }
+    else
+      @posts.to_a.sort_by! { |post| post.created_at }
+    end
+
+    # paginate the reulsts
     @posts = Kaminari.paginate_array(@posts.reverse).page params[:page]
     respond_with @posts
   end
@@ -26,6 +35,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    # get all the root comments, ones that are the start of a thread
     @comments = @post.root_comments.order('created_at desc')
 
     if current_user
@@ -34,7 +44,6 @@ class PostsController < ApplicationController
     end
 
     @community = @post.community
-
   end
 
   # GET /posts/new
@@ -120,6 +129,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:id, :title, :url, :text, :community_id)
+      params.require(:post).permit(:id, :title, :url, :text, :community_id, :sortby)
     end
 end

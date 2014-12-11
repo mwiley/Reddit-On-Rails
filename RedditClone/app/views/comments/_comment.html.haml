@@ -4,7 +4,7 @@
       .row
         = upvote_button(comment_upvote_path(comment), comment, current_user, "comment")
       .row
-        %span.votes{:id => "comment-count-"+comment.id.to_s}= comment.get_upvotes.size - comment.get_downvotes.size
+        %span.votes{:id => "comment-count-"+comment.id.to_s}= comment.total_votes
       .row
         = downvote_button(comment_downvote_path(comment), comment, current_user, "comment")
 

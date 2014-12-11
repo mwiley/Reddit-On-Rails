@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).on 'ready ajax:success', ->
+jQuery ->
   # Create a comment
   $(".comment-form")
   .on "ajax:beforeSend", (evt, xhr, settings) ->
@@ -16,6 +16,8 @@ $(document).on 'ready ajax:success', ->
     .val('');
     $(xhr.responseText).hide().prependTo( $("#comments") ).show('slow')
 
+
+$(document).on 'ready ajax:success', ->
   # Delete a comment
   $("a.close")
     .on "ajax:beforeSend", (evt, data, status, xhr) ->
@@ -24,8 +26,3 @@ $(document).on 'ready ajax:success', ->
       $(this).closest(".comment").hide('fast')
     .on "ajax:error", (evt, data, status, xhr) ->
       $(this).closest(".comment").fadeTo('fast', 1)
-
-  # Reply to a comment
-  $("a.comment-reply")
-    .on "click", ->
-      alert "Hello world"
