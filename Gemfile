@@ -40,10 +40,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
-group :development do
-  gem "better_errors"
-end
-
 # Administrate the site from a separate frontend interface
 gem 'formtastic', github: 'justinfrench/formtastic'
 gem 'activeadmin', github: 'activeadmin'
@@ -61,9 +57,12 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'awesome_nested_set'
 gem 'acts_as_commentable_with_threading'
 
+group :development do
+  gem "better_errors"
+end
 
-# Rails Heroku integration
 group :production do
+  # Rails Heroku integration
   gem 'rails_serve_static_assets'
   gem 'rails_12factor', group: :production
   # Use postgresql for production
