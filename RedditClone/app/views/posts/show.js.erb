@@ -1,3 +1,0 @@
-$('#post-count-<%= @post.id.to_s %>').html('<%= @post.get_upvotes.size - @post.get_downvotes.size %>');
-$('#post-upvote-<%= @post.id.to_s %>').attr('class', '<%= upvote_class(@post, current_user) %>');
-$('#post-downvote-<%= @post.id.to_s %>').attr('class', '<%= downvote_class(@post, current_user) %>');
