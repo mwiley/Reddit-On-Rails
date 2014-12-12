@@ -39,6 +39,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
+
 group :development do
   gem "better_errors"
 end
@@ -60,12 +61,13 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'awesome_nested_set'
 gem 'acts_as_commentable_with_threading'
 
+
 # Rails Heroku integration
 group :production do
   gem 'rails_serve_static_assets'
   gem 'rails_12factor', group: :production
-  # use unicorn app server for production
-  gem 'unicorn'
   # Use postgresql for production
   gem 'pg'
+  # use unicorn app server
+  gem 'unicorn'
 end
