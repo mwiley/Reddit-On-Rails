@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<component name="dataSourceStorage">
-  <data-source name="Rails RedditClone: development" uuid="f1f1ab50-2552-495b-b4eb-8998e2a799cf">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
-  </data-source>
-  <data-source name="Rails RedditClone: test" uuid="0c25d305-fd5f-412b-a238-db931340c9cd">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
-  </data-source>
-</component>

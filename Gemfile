@@ -17,7 +17,7 @@ gem 'sass-rails'
 # Automatically add browser specific css prefixes
 gem 'autoprefixer-rails'
 # Use Twitter Boostrap CSS framework
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -33,7 +33,7 @@ gem 'haml'
 gem 'jquery-rails'
 gem 'jquery-ui-rails', github: 'joliss/jquery-ui-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'jquery-turbolinks', git: 'git@github.com:kossnocorp/jquery.turbolinks.git'
+gem 'jquery-turbolinks'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
