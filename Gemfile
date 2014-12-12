@@ -7,17 +7,13 @@ gem 'rails', '4.1.7'
 group :development do
   gem 'sqlite3'
 end
-# Use postgresql for production
-group :production do
-  gem 'pg'
-end
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Automatically add browser specific css prefixes
 gem 'autoprefixer-rails'
 # Use Twitter Boostrap CSS framework
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -33,7 +29,7 @@ gem 'haml'
 gem 'jquery-rails'
 gem 'jquery-ui-rails', github: 'joliss/jquery-ui-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'jquery-turbolinks'
+gem 'jquery-turbolinks', github: 'kossnocorp/jquery.turbolinks'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
@@ -68,4 +64,8 @@ gem 'acts_as_commentable_with_threading'
 group :production do
   gem 'rails_serve_static_assets'
   gem 'rails_12factor', group: :production
+  # use unicorn app server for production
+  gem 'unicorn'
+  # Use postgresql for production
+  gem 'pg'
 end

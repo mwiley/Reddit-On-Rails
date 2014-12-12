@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails RedditClone: development" uuid="f1f1ab50-2552-495b-b4eb-8998e2a799cf">
+      <secret-storage>memory</secret-storage>
+    </data-source>
+    <data-source name="Rails RedditClone: test" uuid="0c25d305-fd5f-412b-a238-db931340c9cd">
+      <secret-storage>memory</secret-storage>
+    </data-source>
+  </component>
+</project>
