@@ -2,8 +2,16 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
+# Use sqlite3 for development
+group :development do
+  gem 'sqlite3'
+end
+# Use postgresql for production
+group :production do
+  gem 'pg'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Automatically add browser specific css prefixes
@@ -55,3 +63,9 @@ gem 'acts_as_votable', '~> 0.10.0'
 # Commenting
 gem 'awesome_nested_set'
 gem 'acts_as_commentable_with_threading'
+
+# Rails Heroku integration
+group :production do
+  gem 'rails_serve_static_assets'
+  gem 'rails_12factor', group: :production
+end
