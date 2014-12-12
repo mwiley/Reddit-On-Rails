@@ -1,0 +1,6 @@
+$("#comment-count-<%= @comment.id.to_s %>")
+        .html('<%= @comment.get_upvotes.size - @comment.get_downvotes.size %>');
+$('#comment-upvote-<%= @comment.id.to_s %>')
+        .attr('class', '<%= upvote_class(@comment, current_user) %>');
+$('#comment-downvote-<%= @comment.id.to_s %>')
+        .attr('class', '<%= downvote_class(@comment, current_user) %>');

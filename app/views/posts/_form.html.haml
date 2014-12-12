@@ -1,0 +1,7 @@
+= simple_form_for [@community, @post] do |f|
+  = f.label "Community"
+  = f.collection_select :community_id, Community.all, :id, :name, {include_blank: true}, class: 'form-control combobox'
+  = f.input :title
+  = f.input :url
+  = f.input :text, as: :text
+  = f.button :submit

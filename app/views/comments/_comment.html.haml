@@ -1,0 +1,25 @@
+%div.comment{ :id => "comment-#{comment.id}" }
+  .row
+    .col-sm-1.comment-vote
+      .row
+        = upvote_button(comment_upvote_path(comment), comment, current_user, "comment")
+      .row
+        %span.votes{:id => "comment-count-"+comment.id.to_s}= comment.total_votes
+      .row
+        = downvote_button(comment_downvote_path(comment), comment, current_user, "comment")
+
+    .col-sm-9.comment-content
+      %hr
+      - if current_user && current_user.id == comment.user_id
+        = link_to "×", comment_path(comment), :method => :delete, :remote => true,
+        :confirm => "Are you sure you want to remove this comment?", :disable_with => "×", :class => 'close'
+      %h4
+        = comment.user.email
+        %small= time_ago_in_words comment.updated_at
+      %p= comment.body
+
+      - if current_user
+        = link_to "Reply", comment_reply_path(comment), :remote => true, class: "comment-reply"
+
+      = if comment.has_children?
+        = render :partial => 'comments/comment', :collection => comment.children, :as => :comment

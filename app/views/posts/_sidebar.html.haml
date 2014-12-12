@@ -1,0 +1,14 @@
+.row
+  .btn-group-vertical
+    = link_to 'Submit a New Post', new_post_path, class: "btn btn-primary"
+    = link_to 'Create a New Community', new_community_path, class: "btn btn-default"
+
+- if current_user && @community
+  .row
+    %hr
+    = subscribe_button(current_user, @community)
+
+-if @community
+  %hr
+  .row
+    = @community.description

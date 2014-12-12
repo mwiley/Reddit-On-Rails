@@ -1,0 +1,32 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post-vote {
+  position: relative;
+  left: 30px;
+}
+
+.upvote-button {
+  color: #cc342d;
+
+}
+
+.downvote-button {
+  color: #00a3ba;
+}
+
+.vote-button {
+  color: #d1d1d1;
+}
+
+a.glyphicon {
+ text-decoration: none;
+}
+
+.votes {
+  position: relative;
+  left: 3px;
+  bottom: 3px;
+}
+

@@ -1,0 +1,18 @@
+.row
+  .col-sm-10
+    .row
+      %ol.breadcrumb.col-sm-3
+        %li= link_to "Top Posts", sortby: 'votes'
+        %li= link_to "Newest Posts", sortby: 'new'
+    .row
+      - if @posts.empty?
+        .panel.panel-default
+          .panel-body No posts here!
+      = render @posts
+
+  .col-sm-2
+    = render 'sidebar'
+
+.row
+  .col-sm-12
+    = paginate @posts
