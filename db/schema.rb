@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210230823) do
+ActiveRecord::Schema.define(version: 20150217053636) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -97,13 +97,13 @@ ActiveRecord::Schema.define(version: 20141210230823) do
   add_index "post_votes", ["user_id"], name: "index_post_votes_on_user_id"
 
   create_table "posts", force: true do |t|
-    t.string   "url"
-    t.string   "text"
+    t.text     "url"
+    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "community_id"
-    t.string   "title"
+    t.text     "title"
   end
 
   create_table "users", force: true do |t|
