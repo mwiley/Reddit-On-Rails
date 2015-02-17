@@ -10,11 +10,12 @@ USER_COUNT = 20
 COMMUNITY_COUNT = 6
 
 for i in 1..USER_COUNT do
+  password = Faker::Internet.password
   User.new(
           email: Faker::Internet.email,
-          password: 'a',
-          password_confirmation: 'a',
-  ).save
+          password: password,
+          password_confirmation: password,
+  ).save!
 end
 
 communities = [

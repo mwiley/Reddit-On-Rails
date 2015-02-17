@@ -67,6 +67,6 @@ group :production do
   gem 'rails_12factor', group: :production
   # Use postgresql for production
   gem 'pg'
-  # use unicorn app server
-  gem 'unicorn'
+  # use puma app server
+  gem 'puma'
 end
